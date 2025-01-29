@@ -1,0 +1,37 @@
+export const colors = {
+  black: '#000000',
+  white: '#ffffff',
+  Main_Dark: '#121207',
+  text_selected: '#007AFF',
+  color_prime: '#007AFF',
+  Light_text: '#FFFDE1',
+  light_dark: '#1D1F24',
+  input_label: '#82817E',
+  input_background: '#86827247',
+  light_black:'#070C12',
+  search_bg:'#1A1C20',
+  nav_title:'#484C52',
+  border_color:'#434549',
+  add_text_color:'#818489',
+noti_orange:'#F45531',
+tag_color:'#B6C2C5',
+title_color:'#C4C5C5',
+tag_text:'#F1F5FA',
+tag_bg:'#1D2124',
+border:'#798088',
+desc_text:'#BFC0C1',
+grey_text:'#99A2B4',
+call_now_blue: '#1471EA',
+rectangle_color:'#545E6A',
+call_Border:'#313840',
+create_text:'#949799',
+create_bg:'#F0F2F7'
+
+};
+
+export const darkThemeColors = {
+  white: "#000000",
+  black: "#ffffff",
+};
+
+// example declaration of color code => _FFFFFF :'#FFFFFF'
