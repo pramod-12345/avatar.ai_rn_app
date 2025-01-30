@@ -12,7 +12,7 @@ import {
   CardStyleInterpolators,
   createStackNavigator,
 } from '@react-navigation/stack';
-import {SCREENS} from './screenNames';
+import {SCREEN_NAMES, SCREENS} from './screenNames';
 import Explore from '../screens/Explore/Explore';
 import Calls from '../screens/Calls/Calls';
 import Chat from '../screens/Chat/Chat';
@@ -30,6 +30,8 @@ import CallSelectSvg from '../assets/svg/select_call.svg';
 import ChatSelectSvg from '../assets/svg/select_chat.svg';
 import ExploreSelectSvg from '../assets/svg/select_explore.svg';
 import SettingSelectSvg from '../assets/svg/select_setting.svg';
+import CreatePersona from '../screens/Create/CreatePersona';
+import AvatarScreen from '../screens/Create/AvatarScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -122,6 +124,22 @@ const headerStyleTransparent = {
 };
 
 
+const Stack = createStackNavigator<any>();
+
+const CreateStack = () => {
+  return (
+    <Stack.Navigator initialRouteName={SCREEN_NAMES.Create}>
+      <Stack.Screen
+        options={({navigation}) => ({...headerStyleTransparent})}
+        name={SCREEN_NAMES.Create}
+        component={Create}
+      />
+    
+    </Stack.Navigator>
+  );
+};
+
+
 function BottomTabNavigator() {
   return (
     <Tab.Navigator
@@ -131,11 +149,11 @@ function BottomTabNavigator() {
       headerShown: false,
     }}>
         <Tab.Screen
-          name={SCREENS.Create}
+          name={'Create'}
           options={{
             tabBarLabel: 'Create',
           }}
-          component={Create}
+          component={CreateStack}
         />
         <Tab.Screen
           name={SCREENS.Calls}

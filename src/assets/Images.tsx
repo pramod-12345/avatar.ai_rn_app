@@ -12,7 +12,6 @@ export const IMAGES = {
   call: require('./icons/call.png'),
   chat: require('./icons/chat.png'),
   explore: require('./icons/explore.png'),
-  setting: require('./icons/setting.jpg'),
   scifi: require('./icons/scifi.png'),
   adventure: require('./icons/adventure.png'),
   space: require('./icons/space.jpg'),
@@ -21,4 +20,7 @@ postImg1 : require('./icons/post1.png'),
 postImg2 : require('./icons/post2.png'),
 postImg3 : require('./icons/post3.png'),
 pfp: require('./icons/pfp.png'),
+image:require('./icons/image.png'),
+profileImage: require('./icons/ProfileImage.png'),
+profileBg: require('./icons/ProfileBg.png')
 };

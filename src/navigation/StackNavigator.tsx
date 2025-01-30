@@ -19,6 +19,8 @@ import Chat from '../screens/Chat/Chat';
 import Create from '../screens/Create/Create';
 import Settings from '../screens/Setttings/Settings';
 import BottomTabNavigator from './BottomNavigator';
+import CreatePersona from '../screens/Create/CreatePersona';
+import AvatarScreen from '../screens/Create/AvatarScreen';
 
 export type RootStackParamList = {
   HomeScreen: undefined;
@@ -181,6 +183,16 @@ const StackNavigator: FC = () => {
         options={({navigation}) => ({headerShown: false})}
         name={SCREENS.BottomTabNavigator}
         component={BottomTabNavigator}
+      />
+        <Stack.Screen
+        options={({navigation}) => ({headerShown: false})}
+        name={SCREENS.CreatePersona}
+        component={CreatePersona}
+      />
+      <Stack.Screen
+        options={({navigation}) => ({headerShown: false})}
+        name={SCREENS.AvatarScreen}
+        component={AvatarScreen}
       />
      
     </Stack.Navigator>

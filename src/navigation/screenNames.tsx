@@ -10,8 +10,10 @@ export const SCREENS = {
   Chat: 'Chat',
 Create: 'Create',
 Explore:'Explore',
-BottomTabNavigator:'BottomTabNavigator'
-
+BottomTabNavigator:'BottomTabNavigator',
+CreatePersona:'CreatePersona',
+CreateStack:'CreateStack',
+AvatarScreen:'AvatarScreen'
 };
 
 export interface ScreenNames {
@@ -27,6 +29,10 @@ export interface ScreenNames {
 Create: string;
 Explore:string;
 BottomTabNavigator:string;
+CreatePersona:string;
+CreateStack:string;
+AvatarScreen:string;
+
 }
 
 export const SCREEN_NAMES: ScreenNames = {

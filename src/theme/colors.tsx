@@ -25,8 +25,17 @@ call_now_blue: '#1471EA',
 rectangle_color:'#545E6A',
 call_Border:'#313840',
 create_text:'#949799',
-create_bg:'#F0F2F7'
-
+create_bg:'#F0F2F7',
+title_text:'#C9D4DB',
+label_text:'#C7CBD1',
+input_text:'#5E6A7C',
+input_bg:'#171B22',
+input_limit_text:'#727A86',
+name_text:'#ECF1F9',
+avatar_username_text:'#71A5EE',
+avatar_description_text:'#A2AEC2',
+button_border_color:'#21272D',
+delete_color:'#EF4E4E'
 };
 
 export const darkThemeColors = {
