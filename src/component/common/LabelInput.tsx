@@ -11,6 +11,9 @@ interface LabelInputProps {
   value: string;
   numberOfLines:number;
   multiline: boolean;
+  editable: boolean;
+  isLimit: boolean;
+  width: string
 }
 
 const LabelInput: React.FC<LabelInputProps> = ({
@@ -20,7 +23,10 @@ const LabelInput: React.FC<LabelInputProps> = ({
   onChange,
   value,
   numberOfLines,
-  multiline
+  multiline,
+  editable,
+  isLimit = true,
+  width = '100%'
 }) => {
   const [charCount, setCharCount] = useState<number>(value.length);
 
@@ -40,13 +46,17 @@ const LabelInput: React.FC<LabelInputProps> = ({
         maxLength={maxLength}
         multiline={multiline}
         onChangeText={handleChangeText}
-        style={styles.input}
+        style={[styles.input,{    width:width        }]}
+        editable={editable}
       />
-      <View style={styles.charCountContainer}>
+      { isLimit &&
+
+        <View style={styles.charCountContainer}>
         <Text style={styles.charCount}>{charCount}</Text>
         <Text style={styles.charCount}>/</Text>
         <Text style={styles.charCount}>{maxLength}</Text>
       </View>
+      }
     </View>
   );
 };
@@ -69,6 +79,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: hp(5),
     color: colors.white,
+    alignSelf:'center'
   },
   charCountContainer: {
     flexDirection: "row",

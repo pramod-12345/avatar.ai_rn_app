@@ -12,6 +12,9 @@ import {colors} from '../../theme/colors';
 import {commonFontStyle, hp} from '../../theme/fonts';
 import CommentSvg from '../../assets/svg/comment.svg';
 import ThumbsupSvg from '../../assets/svg/thumbsup.svg';
+import { navigateTo } from '../../utils/commonFunction';
+import { SCREENS } from '../../navigation/screenNames';
+
 type PostProps = {
   TAGS: {id: number; tagName: string}[];
   Post: {
@@ -38,7 +41,7 @@ const Post: React.FC<PostProps> = ({TAGS, Post}) => {
         <View style={styles.relativeContainer}>
           <Image source={item.image} style={styles.imgStyle} />
           <View style={styles.usernameContainer}>
-            <Text style={styles.usernameText}>{item.username}</Text>
+            <Text style={styles.usernameText} onPress={() => navigateTo(SCREENS.OtherUserProfile)}>{item.username}</Text>
           </View>
           <View style={styles.postDetailsContainer}>
             <Text style={styles.titleText}>{item.title}</Text>
@@ -61,11 +64,12 @@ const Post: React.FC<PostProps> = ({TAGS, Post}) => {
 
   return (
     <View style={styles.mainContainer}>
+      {/* Tag Scroll */}
       <ScrollView
         horizontal
         contentContainerStyle={styles.container}
         showsHorizontalScrollIndicator={false}>
-        {TAGS.map(tag => (
+        {TAGS?.map(tag => (
           <TouchableOpacity
             key={tag.id}
             style={[
@@ -83,12 +87,15 @@ const Post: React.FC<PostProps> = ({TAGS, Post}) => {
           </TouchableOpacity>
         ))}
       </ScrollView>
+
+      {/* Post List */}
       <FlatList
         renderItem={renderItem}
         data={Post}
-        numColumns={2}
-        contentContainerStyle={styles.postRowStyle}
-        columnWrapperStyle={styles.postColumnStyle}
+        keyExtractor={(item) => item.id.toString()}
+        numColumns={2} // Columns layout for the posts
+        contentContainerStyle={styles.postRowStyle} // Ensure gap between rows
+        columnWrapperStyle={styles.postColumnStyle} // Ensure gap between columns
       />
     </View>
   );
@@ -96,6 +103,7 @@ const Post: React.FC<PostProps> = ({TAGS, Post}) => {
 
 const styles = StyleSheet.create({
   mainContainer: {
+    flex: 1,  // Ensure the parent container takes available space
     gap: hp(10),
   },
   relativeContainer: {
@@ -162,6 +170,7 @@ const styles = StyleSheet.create({
     borderColor: colors.tag_bg,
     borderWidth: 1,
     borderRadius: hp(15),
+    marginBottom: hp(20), // Ensure space between items
   },
   imgStyle: {
     height: '100%',
@@ -169,11 +178,8 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     borderRadius: hp(15),
     position: 'relative',
-    opacity:0.7
-    
+    opacity: 0.7,
   },
- 
-
   usernameContainer: {
     borderColor: '#161B2070',
     position: 'absolute',
@@ -189,6 +195,7 @@ const styles = StyleSheet.create({
   },
   postRowStyle: {
     gap: hp(20),
+    flexGrow: 1, // Allow posts to take up available space
   },
   postColumnStyle: {
     gap: hp(20),

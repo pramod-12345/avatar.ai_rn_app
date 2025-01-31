@@ -12,18 +12,24 @@ import { hp } from '../../theme/fonts';
 import EyeSvg from '../../assets/svg/eye.svg';
 type Props = {
   placeholder: string;
-  isPassword?: boolean; // New prop to determine if the input is a password field
+  isPassword?: boolean; 
+  backgroundColor:any;
+  width: string;
+  placeholderTextColor:any
 };
 
-const CommonInput = ({placeholder, isPassword = false}: Props) => {
+const CommonInput = ({placeholder, isPassword = false, backgroundColor= colors.input_background,width = '100%',placeholderTextColor = colors.input_label}: Props) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   return (
     <View style={styles.inputWrapper}>
       <TextInput
         placeholder={placeholder}
-        style={styles.inputContainer}
-        placeholderTextColor={colors.input_label}
+        style={[styles.inputContainer,{    
+          backgroundColor: backgroundColor, 
+          width:width
+        }]}
+        placeholderTextColor={placeholderTextColor   }
         secureTextEntry={isPassword && !isPasswordVisible} // Toggle visibility for passwords
       />
       {isPassword && (
@@ -52,11 +58,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     padding: 10,
-    backgroundColor: colors.input_background,
     borderColor: 'transparent',
     paddingRight: 40, 
     height:hp(47),
     color: colors.white,
+    alignSelf:'center'
   },
   eyeButton: {
     position: 'absolute',

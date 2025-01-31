@@ -11,7 +11,7 @@ import {
   Text,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import BackHeader from "../../component/common/BackHeader";
 import { AppStyles } from "../../theme/appStyles";
 import { colors } from "../../theme/colors";
@@ -26,64 +26,91 @@ import CustomizeSvg from "../../assets/svg/customizeChat.svg";
 import PersonaSvg from "../../assets/svg/persona.svg";
 import AwaySvg from "../../assets/svg/away.svg";
 import DeleteSvg from "../../assets/svg/delete.svg";
-
-const BUTTONS = [
-  { label: "View", width: "33.33%", onPress: null },
-  { label: "Share", width: "33.33%", onPress: null },
-  { label: "Hide", width: "33.33%", onPress: null },
-  { label: "Refresh Chat", width: "50%", onPress: null },
-  { label: "Start New Chat", width: "50%", onPress: null },
-];
-
-const SvgButtons = [
-  {
-    id: 1,
-    titleOne: "Voice",
-    titleSecond: "Add",
-    SvgOne: VoiceSvg,
-    Svgsecond: RightArrowSvg,
-    isSecondSvg: true,
-    isDelete: false,
-  },
-  {
-    id: 2,
-    titleOne: "Customize Chat",
-    titleSecond: "",
-    SvgOne: CustomizeSvg,
-    Svgsecond: RightArrowSvg,
-    isSecondSvg: true,
-    isDelete: false,
-  },
-  {
-    id: 3,
-    titleOne: "Persona",
-    titleSecond: "Off",
-    SvgOne: PersonaSvg,
-    Svgsecond: RightArrowSvg,
-    isSecondSvg: true,
-    isDelete: false,
-  },
-  {
-    id: 4,
-    titleOne: "Away Messages",
-    titleSecond: "",
-    SvgOne: AwaySvg,
-    Svgsecond: RightArrowSvg,
-    isSecondSvg: false,
-    isDelete: false,
-  },
-  {
-    id: 5,
-    titleOne: "Clear All Messages",
-    titleSecond: "",
-    SvgOne: DeleteSvg,
-    Svgsecond: RightArrowSvg,
-    isSecondSvg: false,
-    isDelete: true,
-  },
-];
+import { SCREENS } from "../../navigation/screenNames";
+import { navigationRef } from "../../navigation/RootContainer";
+import CommonModal from "../../component/common/CommonModal";
 
 const AvatarScreen = () => {
+  const [isHideModalVisible, setIsHideModalVisible] = useState(false);
+
+  const BUTTONS = [
+    {
+      label: "View",
+      width: "33.33%",
+      onPress: () => {
+        navigationRef.navigate(SCREENS.ViewAvatarScreen);
+      },
+    },
+    {
+      label: "Share",
+      width: "33.33%",
+      onPress: null
+    },
+    { label: "Hide", width: "33.33%",onPress: () => {
+      setIsHideModalVisible(true);
+    },},
+    { label: "Refresh Chat", width: "50%", onPress: null },
+    { label: "Start New Chat", width: "50%", onPress: null },
+  ];
+
+  const SvgButtons = [
+    {
+      id: 1,
+      titleOne: "Voice",
+      titleSecond: "Add",
+      SvgOne: VoiceSvg,
+      Svgsecond: RightArrowSvg,
+      isSecondSvg: true,
+      isDelete: false,
+      isToggleSwitch: false,
+      isDisabled: false,
+    },
+    {
+      id: 2,
+      titleOne: "Customize Chat",
+      titleSecond: "",
+      SvgOne: CustomizeSvg,
+      Svgsecond: RightArrowSvg,
+      isSecondSvg: true,
+      isDelete: false,
+      isToggleSwitch: false,
+      isDisabled: false,
+    },
+    {
+      id: 3,
+      titleOne: "Persona",
+      titleSecond: "Off",
+      SvgOne: PersonaSvg,
+      Svgsecond: RightArrowSvg,
+      isSecondSvg: true,
+      isDelete: false,
+      isToggleSwitch: false,
+      isDisabled: false,
+    },
+    {
+      id: 4,
+      titleOne: "Away Messages",
+      titleSecond: "",
+      SvgOne: AwaySvg,
+      Svgsecond: RightArrowSvg,
+      isSecondSvg: false,
+      isDelete: false,
+      isToggleSwitch: true,
+      isDisabled: true,
+    },
+    {
+      id: 5,
+      titleOne: "Clear All Messages",
+      titleSecond: "",
+      SvgOne: DeleteSvg,
+      Svgsecond: RightArrowSvg,
+      isSecondSvg: false,
+      isDelete: true,
+      isToggleSwitch: false,
+      isDisabled: false,
+    },
+  ];
+
   return (
     <SafeAreaView style={[AppStyles.mainWithPadding, styles.safeArea]}>
       <BackHeader title="" isBackHeader={false} isCross={true} />
@@ -143,9 +170,11 @@ const AvatarScreen = () => {
                     titleOne={item.titleOne}
                     titleSecond={item.titleSecond}
                     SvgOne={item.SvgOne}
-                    Svgsecond={item.Svgsecond}
+                    SvgSecond={item.Svgsecond}
                     isSecondSvg={item.isSecondSvg}
                     isDelete={item.isDelete}
+                    key={item.id}
+                    isToggleSwitch={item.isToggleSwitch}
                   />
                 );
               })}
@@ -153,6 +182,10 @@ const AvatarScreen = () => {
           </ScrollView>
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
+
+<CommonModal visible={isHideModalVisible} onClose={() => null} okayButtonOnPress={() => null} cancelButtonOnPress={() => setIsHideModalVisible(false)} firstButtonText={'Cancel'} secondButtonText={'Yes'} titleMain={'Hide Character'} description={'Are you sure you want to hide this Character from the list?'}/>
+
+      
     </SafeAreaView>
   );
 };

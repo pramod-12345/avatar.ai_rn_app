@@ -13,7 +13,9 @@ Explore:'Explore',
 BottomTabNavigator:'BottomTabNavigator',
 CreatePersona:'CreatePersona',
 CreateStack:'CreateStack',
-AvatarScreen:'AvatarScreen'
+AvatarScreen:'AvatarScreen',
+ViewAvatarScreen:'ViewAvatarScreen',
+OtherUserProfile:'OtherUserProfile',
 };
 
 export interface ScreenNames {
@@ -32,6 +34,8 @@ BottomTabNavigator:string;
 CreatePersona:string;
 CreateStack:string;
 AvatarScreen:string;
+ViewAvatarScreen:string;
+OtherUserProfile:string;
 
 }
 

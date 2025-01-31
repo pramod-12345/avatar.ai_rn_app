@@ -22,5 +22,7 @@ postImg3 : require('./icons/post3.png'),
 pfp: require('./icons/pfp.png'),
 image:require('./icons/image.png'),
 profileImage: require('./icons/ProfileImage.png'),
-profileBg: require('./icons/ProfileBg.png')
+profileBg: require('./icons/ProfileBg.png'),
+userProfile: require('./icons/userProfile.png')
+
 };

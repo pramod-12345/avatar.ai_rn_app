@@ -21,6 +21,8 @@ import Settings from '../screens/Setttings/Settings';
 import BottomTabNavigator from './BottomNavigator';
 import CreatePersona from '../screens/Create/CreatePersona';
 import AvatarScreen from '../screens/Create/AvatarScreen';
+import ViewAvatarScreen from '../screens/Create/ViewAvatar';
+import OtherUserProfile from '../screens/Profile/OtherUserProfile';
 
 export type RootStackParamList = {
   HomeScreen: undefined;
@@ -193,6 +195,16 @@ const StackNavigator: FC = () => {
         options={({navigation}) => ({headerShown: false})}
         name={SCREENS.AvatarScreen}
         component={AvatarScreen}
+      />
+      <Stack.Screen
+        options={({navigation}) => ({headerShown: false})}
+        name={SCREENS.ViewAvatarScreen}
+        component={ViewAvatarScreen}
+      />
+      <Stack.Screen
+        options={({navigation}) => ({headerShown: false})}
+        name={SCREENS.OtherUserProfile}
+        component={OtherUserProfile}
       />
      
     </Stack.Navigator>

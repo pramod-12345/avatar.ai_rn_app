@@ -35,7 +35,17 @@ name_text:'#ECF1F9',
 avatar_username_text:'#71A5EE',
 avatar_description_text:'#A2AEC2',
 button_border_color:'#21272D',
-delete_color:'#EF4E4E'
+delete_color:'#EF4E4E',
+toggle_on:'#0CB8B3',
+toggle_off:'#D4D6DD',
+toggle_on_2:'#006FFD',
+toggle_text:'#D0D7E0',
+btn_border:'#474A4C',
+modal_border:'#6E777C',
+modal_button:'#5E6166',
+username_color:'#86C0FF',
+avatar_color:'#E6E6E6',
+report_text:'#9A5252'
 };
 
 export const darkThemeColors = {
